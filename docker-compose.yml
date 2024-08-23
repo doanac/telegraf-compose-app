@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  agent:
+    image: hub.foundries.io/${FACTORY}/telegraf
+    build: ./
+    network_mode: host
+    volumes:
+      - /var/sota:/var/sota:ro
