@@ -4,7 +4,7 @@ RUN \
 	apk add git make upx && \
 	git clone https://github.com/influxdata/telegraf && \
 	cd telegraf && \
-	git checkout v1.31.3 && \
+	git checkout v1.35.4 && \
 	make build_tools
 
 COPY template.conf /src/
