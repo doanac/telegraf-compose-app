@@ -31,13 +31,16 @@ percpu = false
   ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
 
 [[outputs.influxdb_v2]]
-  urls = ["https://influx.andy.io:8443"]
-  organization = "fio"
-  bucket = "fio"
+  urls = ["https://questdb.gavelci.us:8443"]
+  content_encoding = "identity"
 
-  tls_ca = "${ca}"
-  tls_cert = "${client}"
-  tls_key = "${pkey}"
+  tls_ca = "/var/sota/root.crt"
+  tls_cert = "/var/sota/client.pem"
+  tls_key = "/var/sota/pkey.pem"
+
+## Recommended by QuestDb
+[[aggregators.merge]]
+  drop_original = true
 EOF
 
 echo == Launching telegraf
